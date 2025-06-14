@@ -1,0 +1,15 @@
+plugin: community.general.proxmox
+url: 'https://192.168.1.96:8006'
+user: 'ansible@pve'
+token_id: 'ansible-api-token'
+token_secret: "{{ lookup('bitwarden.secrets.lookup', 'c79b8f45-378c-497a-baf5-b2fc00a36dc2')  }}"
+validate_certs: false
+want_facts: true
+exclude_nodes: true
+keyed_groups:
+    # proxmox_tags_parsed is an example of a fact only returned when 'want_facts=true'
+  - key: proxmox_tags_parsed
+    separator: ""
+    prefix: group_
+compose:
+  ansible_host: proxmox_agent_interfaces[1]['ip-addresses'][0].split('/')[0]

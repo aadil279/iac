@@ -1,0 +1,2 @@
+package_manager: dnf
+sudoer_group: wheel

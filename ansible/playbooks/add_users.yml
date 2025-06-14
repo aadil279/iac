@@ -1,0 +1,40 @@
+- name: Bootstrap ansible user
+  hosts: linux_vms
+  become: yes
+  tasks:
+    - name: Create ansible user
+      user:
+        name: ansible
+        groups: "{{ sudoer_group }}"
+        append: yes
+        shell: /bin/bash
+
+    - name: Allow passwordless sudo for ansible user 
+      copy:
+        dest: /etc/sudoers.d/ansible
+        content: 'ansible ALL=(ALL) NOPASSWD: ALL'
+        mode: '0440'
+
+    - name: Add SSH key for ansible
+      authorized_key:
+        user: ansible
+        state: present
+        key: "{{ lookup('file', '~/.ssh/id_rsa_ansiblenode.pub') }}"
+
+- name: Bootstrap personal user
+  hosts: linux_vms
+  become: yes
+  tasks:
+    - name: Create aadil279
+      user:
+        name: aadil279
+        password: "{{ lookup('ansible.builtin.env', 'USER_PASSWORD_HASH')}}"
+        groups: "{{ sudoer_group }}"
+        append: yes
+        shell: /bin/bash
+    
+    - name: Add SSH key for user
+      authorized_key:
+        user: aadil279
+        state: present
+        key: "{{ lookup('file', '/srv/ansible/config/id_rsa_aadil_fedora.pub')}}"\n

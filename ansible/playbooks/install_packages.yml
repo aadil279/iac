@@ -1,0 +1,8 @@
+- name: Install qemu-guest-agent 
+  hosts: linux_vms
+  become: true
+  tasks:
+    - name: Install the package
+      ansible.builtin.package:
+        name: qemu-guest-agent
+        state: present
