@@ -1,0 +1,5 @@
+**/.terraform
+**/.bitwarden
+**/.terraform.lock.hcl
+**/*.config
+**/*.tfvars
