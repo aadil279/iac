@@ -1,0 +1,17 @@
+- name: Update all packages for all hosts
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update all APT packages (Debian/Ubuntu)
+      ansible.builtin.apt:
+        update_cache: yes
+        name: "*"
+        state: latest
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: Update all DNF packages (Fedora/Alma/RHEL)
+      ansible.builtin.dnf:
+        update_cache: yes
+        name: "*"
+        state: latest
+      when: ansible_facts['os_family'] == "RedHat"
