@@ -1,8 +1,0 @@
-- name: Test BWS
-  hosts: proxmox_all_running
-  gather_facts: true
-  vars:
-    password: "{{ lookup('bitwarden.secrets.lookup', 'c79b8f45-378c-497a-baf5-b2fc00a36dc2')  }}"
-  tasks:
-    - ansible.builtin.debug:
-        var:  package_manager

@@ -1,5 +1,5 @@
 - name: Bootstrap ansible user
-  hosts: linux_vms
+  hosts: all
   become: yes
   tasks:
     - name: Create ansible user
@@ -19,10 +19,10 @@
       authorized_key:
         user: ansible
         state: present
-        key: "{{ lookup('file', '~/.ssh/id_rsa_ansiblenode.pub') }}"
+        key: "{{ lookup('bitwarden.secrets.lookup', 'daf2bc7f-d1c3-4747-a643-b300014b2f0b') }}"
 
 - name: Bootstrap personal user
-  hosts: linux_vms
+  hosts: all
   become: yes
   tasks:
     - name: Create aadil279
@@ -37,4 +37,4 @@
       authorized_key:
         user: aadil279
         state: present
-        key: "{{ lookup('file', '/srv/ansible/config/id_rsa_aadil_fedora.pub')}}"\n
+        key: "{{ lookup('bitwarden.secrets.lookup', '3de8c224-b4d3-4760-af31-b300014b08e5')  }}" 
