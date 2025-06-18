@@ -1,0 +1,6 @@
+---
+collections:
+  - name: bitwarden.secrets
+    version: "1.0.1"
+  - name: community.general
+    version: "10.7.1"
