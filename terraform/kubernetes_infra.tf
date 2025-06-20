@@ -1,11 +1,11 @@
-/*resource "proxmox_virtual_environment_vm" "kube-master" {
+resource "proxmox_virtual_environment_vm" "kube-master" {
   node_name       = "pve01"
   vm_id           = 9001
   stop_on_destroy = true
 
-  name        = "k8s-master"
+  name        = "k8s-master-test"
   description = "Kubernetes Master Node. Do NOT keep important data here as this is a FAAFO VM"
-  tags        = ["alma", "kubernetes", "master"]
+  tags        = ["alma", "k8s", "k8s-master"]
 
   agent {
     enabled = true
@@ -21,7 +21,7 @@
   }
 
   disk {
-    datastore_id = "test_vmstore"
+    datastore_id = "hdd-thin-vmstore"
     file_id      = proxmox_virtual_environment_download_file.alma-cloud-image.id
     interface    = "virtio0"
     size         = 20
@@ -49,19 +49,19 @@
 locals {
   kube_workers = {
     "k8s-worker-01" = {
-      vm_name = "k8s-worker-01"
+      vm_name = "k8s-worker-test"
       vm_id = 9002
     }
-    "k8s-worker-02" = {
+    /*"k8s-worker-02" = {
       vm_name = "k8s-worker-02"
       vm_id = 9003
     }
     "k8s-worker-03" = {
       vm_name = "k8s-worker-03"
       vm_id = 9004
-    }
-  }
+    }*/
 }
+  }
 
 resource "proxmox_virtual_environment_vm" "kube-worker" {
   for_each = local.kube_workers
@@ -72,7 +72,7 @@ resource "proxmox_virtual_environment_vm" "kube-worker" {
 
   name        = each.value.vm_name
   description = "Kubernetes Worker Node. Do NOT keep important data here as this is a FAAFO VM"
-  tags        = ["alma", "kubernetes", "worker"]
+  tags        = ["alma", "k8s", "k8s-worker"]
 
   agent {
     enabled = true
@@ -88,7 +88,7 @@ resource "proxmox_virtual_environment_vm" "kube-worker" {
   }
 
   disk {
-    datastore_id = "test_vmstore"
+    datastore_id = "hdd-thin-vmstore"
     file_id      = proxmox_virtual_environment_download_file.alma-cloud-image.id
     interface    = "virtio0"
     size         = 15
@@ -122,4 +122,3 @@ output "kube_worker_vms" {
     }
   }
 }
-*/

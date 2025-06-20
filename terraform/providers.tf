@@ -15,7 +15,7 @@ terraform {
 
   # Store state in R2 (Uses S3 API)
   backend "s3" {
-    # Defined during terraform init
+    # Defined during terraform init (data is in config file)
     endpoints = {
       s3 = ""
     }
@@ -44,9 +44,10 @@ provider "proxmox" {
   api_token = data.bitwarden_secret.proxmox-api-token.value
 
   ssh {
-    agent    = true
-    username = "terraform-ssh"
-    private_key = data.bitwarden_secret.proxmox-ssh-key.value
+    agent    = false
+    # TODO: Stop using root (it is a pain to manage new PAM accounts)
+    username = "root"
+    password = data.bitwarden_secret.proxmox-ssh-password.value
 
     node {
       name    = "pve01"

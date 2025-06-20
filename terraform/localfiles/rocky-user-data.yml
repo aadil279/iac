@@ -10,7 +10,7 @@ users:
     groups: wheel
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC4tIEmmmPD8+enXM6qB/m/cxoF5mELzJN1wqyR+xwd5RkiRNszFvXpNPAlLVT3NUsrEyIcY3fVbKbWAE7ltp5CkelCEQDayIPGol5uRDot+eRD9LxhYbUlLSUOptLPjgq82RP7KIcgTDspfYPlX8oIq+kDM0fCxelbaDlHA6wcnvO39qSBaKUCvInT93kf4mUxoj057DXcBzOov1xtTmaYjy4A0aBz1U8JZ7mrES5N+qI3IeNbQegLfZVlpJ275AigYxfCdujLLRE0zw5NU65XHXhTr4cRKi5VMDlOlWCtlmmEVHoGMJnlrkVyz1HQ7RoviYzCv7bcQtXGCLdj564Oa/5ic7lW6KRuyPHzyORh6HNxcwAQFDvjZAkz6/eqcXGxuagqttN43skGXK9/uPxRGFPeg/Uzr32nwLXtdgIve+irFjaTQDs7SVTQi3v5MmdyyZSo5brobUjsWQHSzR+oVD3ZygpdbTCnmg2e79CTKQBZXZorixNrzqxIP0ZHAOU= aadilsidik-fedora@aadil-desktop-fedora
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID1Q/s45joJD5NKBe8cSvAOD+CAvRCvCoCMi+6E7Bfkd
 
 
   - name: ansible
@@ -19,7 +19,7 @@ users:
     groups: wheel
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDSSNSRaemCwQ7UZZ80/yud9FymSb67lTbv4hAMEmeXjULSGuPfJydoYVYP11gT7nu8MWinQ3pYNgoisV8FGRe73bHQ72+ygTDcRZfiM2UaFrtUL6sZhJppWi6RWOr0SMFIyQJhAbbAfonJWhZQFfIEdpWcrX0wSBKcJjjdwARZL39ZVVT05glC759XW0cAZKlHZ0O95QyZNJGnyuNx2AapLznurXeAx8NfMpfZrzv4ojUyXHeJ7IBlv+2yJVjAyE6N3bzK0BnvoAUIa6a7ds5+XOPfYB1IWPXh6SeKtbaoPxy2Rro9+jSmgJZdNGiIP7yKci8PRWHqvuypS3/eZ0VT68R7uK1E3rO+jx4yXZ/yPJ7PExe/DIPT7uPO0h+gfE7W/JtP9IqME+XiVw2NouHDjI4aV8aSPhtpHivmaJkDx/9Fg3/pEcFWIGpOopCYut+oYcd4MxsRIJ3mir3QDZZfo3hZJCVcl7F0ClqI0S63ksPxpEsmOzRpJ8OymzVG458= aadil279@unknownbc24116d70d7.lan
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEtHC4wlwUzN+tkfLFcv/dmV+DYU++bW//IPMmLIuLc3
 
 package_update: true
 package_upgrade: true
