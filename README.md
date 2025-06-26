@@ -3,7 +3,7 @@
 This is my homelab's infrastructure as code.
 
 # Tools Used
-These are the tools and technologies that I am using throughout my homelab. This repository is fairly new, so most of these are not represented here and some might not ever be.
+These are the tools and technologies that I am using throughout my homelab. **This repository is very new, so most of these are not represented here and some might not ever be**.
 - **Proxmox** as hypervisor where all my services run inside Virtual Machines
 - **Ansible** for configuration management. Uses the proxmox dynamic inventory plugin
 - **Terraform** for resource provisioning, mainly VMs at this point
