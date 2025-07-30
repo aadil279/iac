@@ -4,3 +4,5 @@
 **/*.config
 **/*.tfvars
 *.venv
+**/*.ansible
+**/.vscode

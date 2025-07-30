@@ -1,4 +1,4 @@
-- name: Install qemu-guest-agent 
+- name: Install qemu-guest-agent
   hosts: linux_vms
   become: true
   tasks:

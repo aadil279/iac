@@ -3,7 +3,7 @@ resource "proxmox_virtual_environment_vm" "kube-master" {
   vm_id           = 9001
   stop_on_destroy = true
   on_boot = false
-  started = true
+  started = true 
 
   name        = "k8s-master-test"
   description = "Kubernetes Master Node. Do NOT keep important data here as this is a FAAFO VM"
@@ -54,11 +54,11 @@ locals {
       vm_name = "k8s-worker-test"
       vm_id = 9002
     }
-    /*"k8s-worker-02" = {
+/*    "k8s-worker-02" = {
       vm_name = "k8s-worker-02"
       vm_id = 9003
     }
-    "k8s-worker-03" = {
+    /*"k8s-worker-03" = {
       vm_name = "k8s-worker-03"
       vm_id = 9004
     }*/

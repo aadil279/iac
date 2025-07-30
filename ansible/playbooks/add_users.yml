@@ -1,40 +1,40 @@
 - name: Bootstrap ansible user
   hosts: all
-  become: yes
+  become: true
   tasks:
     - name: Create ansible user
-      user:
+      ansible.builtin.user:
         name: ansible
         groups: "{{ sudoer_group }}"
-        append: yes
+        append: true
         shell: /bin/bash
 
-    - name: Allow passwordless sudo for ansible user 
-      copy:
+    - name: Allow passwordless sudo for ansible user
+      ansible.builtin.copy:
         dest: /etc/sudoers.d/ansible
         content: 'ansible ALL=(ALL) NOPASSWD: ALL'
         mode: '0440'
 
     - name: Add SSH key for ansible
-      authorized_key:
+      ansible.posix.authorized_key:
         user: ansible
         state: present
         key: "{{ lookup('bitwarden.secrets.lookup', 'daf2bc7f-d1c3-4747-a643-b300014b2f0b') }}"
 
 - name: Bootstrap personal user
   hosts: all
-  become: yes
+  become: true
   tasks:
     - name: Create aadil279
-      user:
+      ansible.builtin.user:
         name: aadil279
-        password: "{{ lookup('ansible.builtin.env', 'USER_PASSWORD_HASH')}}"
+        password: "{{ lookup('ansible.builtin.env', 'USER_PASSWORD_HASH') }}"
         groups: "{{ sudoer_group }}"
-        append: yes
+        append: true
         shell: /bin/bash
-    
+
     - name: Add SSH key for user
-      authorized_key:
+      ansible.posix.authorized_key:
         user: aadil279
         state: present
-        key: "{{ lookup('bitwarden.secrets.lookup', '3de8c224-b4d3-4760-af31-b300014b08e5')  }}" 
+        key: "{{ lookup('bitwarden.secrets.lookup', '3de8c224-b4d3-4760-af31-b300014b08e5') }}"
