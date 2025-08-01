@@ -1,0 +1,13 @@
+- name: Configure RKE2 servers
+  hosts: group_k8s_master
+  become: true
+  roles:
+    - rke2-server
+
+- name: Configure RKE2 agents (nodes)
+  hosts: group_k8s_worker
+  become: true
+  vars:
+    rke2_server_host: "{{ hostvars[groups['group_k8s_master'][0]].ansible_host }}"
+  roles:
+    - rke2-node

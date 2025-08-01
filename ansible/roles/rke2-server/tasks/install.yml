@@ -1,0 +1,19 @@
+- name: Check if RKE2 is installed
+  ansible.builtin.stat:
+    path: /usr/local/bin/rke2
+  register: rke2_installed
+
+- name: Download RKE2 installer
+  ansible.builtin.get_url:
+    url: https://get.rke2.io
+    dest: /tmp/rke_install.sh
+    mode: "0755"
+  changed_when: false
+  when:
+    - not rke2_installed.stat.exists
+
+- name: Run RKE2 installer
+  ansible.builtin.command: /tmp/rke_install.sh
+  changed_when: false
+  when:
+    - not rke2_installed.stat.exists

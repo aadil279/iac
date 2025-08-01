@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: MIT-0
+---
+# tasks file for roles/rke2-node
+
+- name: Ensure Server IP is defined
+  ansible.builtin.assert:
+    that: rke2_server_host is defined
+    fail_msg: "'rke2_server_host' variable must be defined in order to install nodes"
+
+- name: Install RKE2 Agent
+  ansible.builtin.include_tasks: install.yml
+
+- name: Apply RKE2 configuration
+  ansible.builtin.include_tasks: configure.yml
+
+- name: Configure RKE2 service
+  ansible.builtin.include_tasks: service.yml

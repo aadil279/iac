@@ -1,0 +1,1 @@
+rke2_key: "{{ lookup('bitwarden.secrets.lookup', '77af949e-442a-4369-a8d6-b32a010ec2a9') }}"
