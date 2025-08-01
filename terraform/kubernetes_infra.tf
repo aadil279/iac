@@ -5,9 +5,9 @@ resource "proxmox_virtual_environment_vm" "kube-master" {
   on_boot = false
   started = true 
 
-  name        = "k8s-master-test"
+  name        = "k8s-master-01"
   description = "Kubernetes Master Node. Do NOT keep important data here as this is a FAAFO VM"
-  tags        = ["alma", "k8s", "k8s-master"]
+  tags        = ["alma", "k8s", "k8s-master", "rke2", "rke2-server"]
 
   agent {
     enabled = true
@@ -51,17 +51,17 @@ resource "proxmox_virtual_environment_vm" "kube-master" {
 locals {
   kube_workers = {
     "k8s-worker-01" = {
-      vm_name = "k8s-worker-test"
+      vm_name = "k8s-worker-01"
       vm_id = 9002
     }
-/*    "k8s-worker-02" = {
+    "k8s-worker-02" = {
       vm_name = "k8s-worker-02"
       vm_id = 9003
     }
-    /*"k8s-worker-03" = {
+    "k8s-worker-03" = {
       vm_name = "k8s-worker-03"
       vm_id = 9004
-    }*/
+    }
 }
   }
 
@@ -76,7 +76,7 @@ resource "proxmox_virtual_environment_vm" "kube-worker" {
 
   name        = each.value.vm_name
   description = "Kubernetes Worker Node. Do NOT keep important data here as this is a FAAFO VM"
-  tags        = ["alma", "k8s", "k8s-worker"]
+  tags        = ["alma", "k8s", "k8s-worker", "rke2", "rke2-agent"]
 
   agent {
     enabled = true
