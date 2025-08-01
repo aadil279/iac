@@ -2,14 +2,14 @@
   hosts: all
   become: true
   tasks:
-    - name: Update all APT packages (Debian/Ubuntu)
+    - name: Update all APT packages (Debian/Ubuntu) # noqa: package-latest
       ansible.builtin.apt:
         update_cache: true
         name: "*"
         state: latest
       when: ansible_facts['os_family'] == "Debian"
 
-    - name: Update all DNF packages (Fedora/Alma/RHEL)
+    - name: Update all DNF packages (Fedora/Alma/RHEL) # noqa: package-latest
       ansible.builtin.dnf:
         update_cache: true
         name: "*"
