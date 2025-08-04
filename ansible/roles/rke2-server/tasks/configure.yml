@@ -5,6 +5,15 @@
     mode: '0600'
   register: template_apply_result
 
+- name: "Write nginx ingress configuration manifest"
+  ansible.builtin.copy:
+    src: rke2-ingress-nginx-config.yaml
+    dest: /var/lib/rancher/rke2/server/manifests/rke2-ingress-nginx-config.yaml
+    owner: root
+    group: root
+    mode: '0644'
+
+
 - name: Restart service after config change
   ansible.builtin.service:
     name: rke2-server.service
