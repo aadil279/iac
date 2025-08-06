@@ -23,10 +23,10 @@ resource "proxmox_virtual_environment_vm" "kube-master" {
   }
 
   disk {
-    datastore_id = "hdd-thin-vmstore"
+    datastore_id = "local-lvm"
     file_id      = proxmox_virtual_environment_download_file.alma-cloud-image.id
     interface    = "virtio0"
-    size         = 20
+    size         = 20 
   }
 
   network_device {
